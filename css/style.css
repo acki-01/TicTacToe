@@ -2,8 +2,12 @@
   background-color: red; }
 
 .Square {
-  width: 200px;
-  height: 200px;
+  width: 30%;
   background-color: yellow;
+  border: 1px solid blue;
   float: left;
-  border: 1px solid blue; }
+  height: 100px; }
+
+.container {
+  margin: 0 auto;
+  width: 460px; }
