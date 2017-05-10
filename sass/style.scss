@@ -1,14 +1,19 @@
 .App{
-  background-color: red;
+  text-align: center;
 }
 .Square {
   width: 30%;
   background-color: yellow;
   border: 1px solid blue;
   float: left;
-  height: 100px;
+  height: 128px;
+  display: flex;
+  img {
+    align-items: center;
+    justify-content: center;
+  }
 }
 .container{
   margin: 0 auto;
-  width: 460px;
+  width: 388px;
 }
