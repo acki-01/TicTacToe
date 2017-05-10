@@ -1,6 +1,6 @@
 import React from 'react';
 import Square from './Square.jsx';
-
+import RestartBtn from './RestartBtn.jsx'
 export default class GameBoard extends React.Component{
   constructor(props){
     super(props);
@@ -10,10 +10,24 @@ export default class GameBoard extends React.Component{
         ' ',' ',' ',
         ' ',' ',' '
       ],
-      turn: ""
+      turn: "",
+      winner: null
     }
   }
-  handleTurnChange = () => {
+
+  restartGame=()=>{
+  this.setState({
+    boardPattern:[
+      ' ',' ',' ',
+      ' ',' ',' ',
+      ' ',' ',' '
+    ],
+    turn: "",
+    winner: null
+    }
+  )
+}
+  handleTurnChange = (i) => {
     if (this.state.turn===""){
       this.setState({turn:'./images/angular.ico'})
     }
@@ -27,8 +41,10 @@ export default class GameBoard extends React.Component{
   render() {
     return (
       <div>
+        <RestartBtn restart={this.restartGame}/>
+      <br/>
         {this.state.boardPattern.map(function(value, i){
-          return <Square key={i} turn={this.state.turn} handleTurnChange={this.handleTurnChange}/>
+          return <Square key={i} turn={this.state.turn} onTurnChange={()=>this.handleTurnChange(i)}/>
         }.bind(this))}
       </div>
       )

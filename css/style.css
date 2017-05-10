@@ -6,7 +6,7 @@
   background-color: yellow;
   border: 1px solid blue;
   float: left;
-  height: 128px;
+  height: 135px;
   display: flex; }
   .Square img {
     align-items: center;
@@ -14,4 +14,10 @@
 
 .container {
   margin: 0 auto;
-  width: 388px; }
+  width: 420px; }
+
+.Info h1 {
+  color: green; }
+
+.Info .RestartBtn {
+  margin-bottom: 10px; }
