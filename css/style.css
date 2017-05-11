@@ -1,23 +1,21 @@
 .App {
   text-align: center; }
-
-.Square {
-  width: 30%;
-  background-color: yellow;
-  border: 1px solid blue;
-  float: left;
-  height: 135px;
-  display: flex; }
-  .Square img {
-    align-items: center;
-    justify-content: center; }
+  .App .Square {
+    width: 30%;
+    background-color: lightblue;
+    border: 1px solid blue;
+    float: left;
+    height: 135px;
+    display: flex; }
+    .App .Square img {
+      align-items: center;
+      justify-content: center; }
+  .App .Info h1 {
+    color: black; }
+  .App .Info .RestartBtn {
+    margin-bottom: 10px;
+    padding: 20px; }
 
 .container {
   margin: 0 auto;
   width: 420px; }
-
-.Info h1 {
-  color: green; }
-
-.Info .RestartBtn {
-  margin-bottom: 10px; }

@@ -1,13 +1,13 @@
 import React from 'react'
 
 export default class Square extends React.Component{
-  handleTurnChange = e => {
+  handleTurnChange(props) {
       if ( typeof this.props.onTurnChange === 'function'){
-          this.props.onTurnChange();
+          props.onTurnChange(props.location, props.turn);
       }
   };
   render(){
-    return <div className='Square' onClick={this.handleTurnChange}>
+    return <div className='Square' onClick={()=>this.handleTurnChange(this.props)}>
       <img src={this.props.turn}></img>
     </div>
   }

@@ -27,8 +27,11 @@ export default class GameBoard extends React.Component{
     }
   )
 }
-  handleTurnChange = (i) => {
-    if (this.state.turn===""){
+  handleTurnChange(location){
+    let updatedBoard=this.state.boardPattern.slice();
+    updatedBoard[location]=this.state.turn;
+    this.setState({boardPattern:updatedBoard})
+    if (this.state.turn==""){
       this.setState({turn:'./images/angular.ico'})
     }
     else if (this.state.turn=='./images/angular.ico'){
@@ -42,10 +45,11 @@ export default class GameBoard extends React.Component{
     return (
       <div>
         <RestartBtn restart={this.restartGame}/>
-      <br/>
-        {this.state.boardPattern.map(function(value, i){
-          return <Square key={i} turn={this.state.turn} onTurnChange={()=>this.handleTurnChange(i)}/>
-        }.bind(this))}
+        <div>
+          {this.state.boardPattern.map(function(value, i){
+            return <Square key={i} turn={this.state.boardPattern[i]} onTurnChange={this.handleTurnChange.bind(this, i)} location={i} value={value}/>
+          }.bind(this))}
+      </div>
       </div>
       )
     }
