@@ -1,6 +1,7 @@
 import React from 'react';
 import Square from './Square.jsx';
-import RestartBtn from './RestartBtn.jsx'
+import NextRoundBtn from './NextRoundBtn.jsx'
+import NewGameBtn from './NewGameBtn.jsx'
 export default class GameBoard extends React.Component{
   constructor(props){
     super(props);
@@ -12,24 +13,38 @@ export default class GameBoard extends React.Component{
       ],
       turn: "./images/angular.ico",
       winner: null,
-      points:0
+      pointsAngular:0,
+      pointsReact:0
     }
   }
 
-  restartGame=()=>{
+  nextRound=()=>{
   this.setState({
     boardPattern:[
       ' ',' ',' ',
       ' ',' ',' ',
       ' ',' ',' '
     ],
-    turn: "",
+    turn: "./images/angular.ico",
     winner: null,
     }
   )
 }
+newGame=()=>{
+this.setState({
+  boardPattern:[
+    ' ',' ',' ',
+    ' ',' ',' ',
+    ' ',' ',' '
+  ],
+  turn: "./images/angular.ico",
+  winner: null,
+  pointsAngular: 0,
+  pointsReact: 0
+  }
+)
+}
   handleTurnChange(location){
-    // console.log(this.props.boardPattern[0]);
     let updatedBoard=this.state.boardPattern.slice();
     updatedBoard[location]=this.state.turn;
     this.setState({boardPattern:updatedBoard})
@@ -39,19 +54,121 @@ export default class GameBoard extends React.Component{
     else if(this.state.turn=='./images/react.ico'){
       this.setState({turn:'./images/angular.ico'})
     }
-    let topRow=updatedBoard[0]+updatedBoard[1]+updatedBoard[2];
-    if (topRow.match('./images/angular.ico./images/angular.ico./images/angular.ico')){
-      this.setState({winner:this.state.turn});
-      this.setState({points:this.state.points+1})
-      console.log('działa');
+    //ANGULAR
+    //check win rows
+    let topRowAng=updatedBoard[0]+updatedBoard[1]+updatedBoard[2];
+    if (topRowAng.match('./images/angular.ico./images/angular.ico./images/angular.ico')){
+      this.setState({winner:'Angular'});
+      this.setState({pointsAngular:this.state.pointsAngular+1})
+      return;
+    }
+    let midRowAng=updatedBoard[3]+updatedBoard[4]+updatedBoard[5];
+    if (midRowAng.match('./images/angular.ico./images/angular.ico./images/angular.ico')){
+      this.setState({winner:'Angular'});
+      this.setState({pointsAngular:this.state.pointsAngular+1})
+      return;
+    }
+    let bottomRowAng=updatedBoard[6]+updatedBoard[7]+updatedBoard[8];
+    if (bottomRowAng.match('./images/angular.ico./images/angular.ico./images/angular.ico')){
+      this.setState({winner:'Angular'});
+      this.setState({pointsAngular:this.state.pointsAngular+1})
+      console.log(this.state.winner);
+      return;
+    }
+    //check win cols
+    let leftColAng=updatedBoard[0]+updatedBoard[3]+updatedBoard[6];
+    if (leftColAng.match('./images/angular.ico./images/angular.ico./images/angular.ico')){
+      this.setState({winner:'Angular'});
+      this.setState({pointsAngular:this.state.pointsAngular+1})
+      return;
+    }
+    let midColAng=updatedBoard[1]+updatedBoard[4]+updatedBoard[7];
+    if (midColAng.match('./images/angular.ico./images/angular.ico./images/angular.ico')){
+      this.setState({winner:'Angular'});
+      this.setState({pointsAngular:this.state.pointsAngular+1})
+      return;
+    }
+    let rightColAng=updatedBoard[2]+updatedBoard[5]+updatedBoard[8];
+    if (rightColAng.match('./images/angular.ico./images/angular.ico./images/angular.ico')){
+      this.setState({winner:'Angular'});
+      this.setState({pointsAngular:this.state.pointsAngular+1})
+      return;
+    }
+    //check win crosses
+    let rightCrossAng=updatedBoard[0]+updatedBoard[4]+updatedBoard[8];
+    if (rightCrossAng.match('./images/angular.ico./images/angular.ico./images/angular.ico')){
+      this.setState({winner:'Angular'});
+      this.setState({pointsAngular:this.state.pointsAngular+1})
+      return;
+    }
+    let leftCrossAng=updatedBoard[2]+updatedBoard[4]+updatedBoard[6];
+    if (leftCrossAng.match('./images/angular.ico./images/angular.ico./images/angular.ico')){
+      this.setState({winner:'Angular'});
+      this.setState({pointsAngular:this.state.pointsAngular+1})
+      return;
+    }
+    //REACT
+    //check win rows
+    let topRowReact=updatedBoard[0]+updatedBoard[1]+updatedBoard[2];
+    if (topRowReact.match('./images/react.ico./images/react.ico./images/reactr.ico')){
+      this.setState({winner:'React'});
+      this.setState({pointsReact:this.state.pointsReact+1})
+      return;
+    }
+    let midRowReact=updatedBoard[3]+updatedBoard[4]+updatedBoard[5];
+    if (midRowReact.match('./images/react.ico./images/react.ico./images/react.ico')){
+      this.setState({winner:'React'});
+      this.setState({pointsReact:this.state.pointsReact+1})
+      return;
+    }
+    let bottomRowReact=updatedBoard[6]+updatedBoard[7]+updatedBoard[8];
+    if (bottomRowAng.match('./images/react.ico./images/react.ico./images/react.ico')){
+      this.setState({winner:'React'});
+      this.setState({pointsReact:this.state.pointsReact+1})
+      return;
+    }
+    //check win cols
+    let leftColReact=updatedBoard[0]+updatedBoard[3]+updatedBoard[6];
+    if (leftColReact.match('./images/react.ico./images/react.ico./images/react.ico')){
+      this.setState({winner:'React'});
+      this.setState({pointsReact:this.state.pointsReact+1})
+      return;
+    }
+    let midColReact=updatedBoard[1]+updatedBoard[4]+updatedBoard[7];
+    if (midColReact.match('./images/react.ico./images/react.ico./images/react.ico')){
+      this.setState({winner:'React'});
+      this.setState({pointsReact:this.state.pointsReact+1})
+      return;
+    }
+    let rightColReact=updatedBoard[2]+updatedBoard[5]+updatedBoard[8];
+    if (rightColReact.match('./images/react.ico./images/react.ico./images/react.ico')){
+      this.setState({winner:'React'});
+      this.setState({pointsReact:this.state.pointsReact+1})
+      return;
+    }
+    //check win crosses
+    let rightCrossReact=updatedBoard[0]+updatedBoard[4]+updatedBoard[8];
+    if (rightCrossReact.match('./images/react.ico./images/react.ico./images/react.ico')){
+      this.setState({winner:'React'});
+      this.setState({pointsReact:this.state.pointsReact+1})
+      return;
+    }
+    let leftCrossReact=updatedBoard[2]+updatedBoard[4]+updatedBoard[6];
+    if (leftCrossReact.match('./images/react.ico./images/react.ico./images/react.ico')){
+      this.setState({winner:'React'});
+      this.setState({pointsReact:this.state.pointsReact+1})
       return;
     }
   }
   render() {
     return (
       <div>
-        <RestartBtn restart={this.restartGame}/>
-        <span>{this.state.points}</span>
+        <NextRoundBtn nextRound={this.nextRound}/>
+        <NewGameBtn new={this.newGame}/>
+        <br/>
+        <span>Angular: {this.state.pointsAngular}</span>
+        <br/>
+        <span>React: {this.state.pointsReact}</span>
         <div>
           {this.state.boardPattern.map(function(value, i){
             return <Square key={i} turn={this.state.boardPattern[i]} onTurnChange={()=>this.handleTurnChange(i)} location={i} value={value}/>
