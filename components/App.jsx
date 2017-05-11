@@ -1,15 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import GameBoard from '../components/GameBoard.jsx'
-import Info from '../components/Info.jsx'
+import Game from '../components/Game.jsx';
 require('../sass/style.scss');
 class App extends React.Component {
   render() {
     return (
         <div className='container'>
           <div className="App">
-          <Info/>
-          <GameBoard/>
+          <Game/>
           </div>
         </div>
     );

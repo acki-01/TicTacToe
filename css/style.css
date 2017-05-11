@@ -1,20 +1,44 @@
 .App {
   text-align: center; }
   .App .Square {
-    width: 30%;
+    width: 33.3%;
     background-color: lightblue;
     border: 1px solid blue;
     float: left;
     height: 135px;
-    display: flex; }
+    display: flex;
+    box-sizing: border-box; }
+    .App .Square .singleSquare:active {
+      background-color: pink; }
     .App .Square img {
       align-items: center;
       justify-content: center; }
-  .App .Info h1 {
-    color: black; }
-  .App .Info .RestartBtn {
-    margin-bottom: 10px;
-    padding: 20px; }
+    .App .Square .line {
+      width: 112px;
+      height: 47px;
+      border-bottom: 1px solid black;
+      position: absolute; }
+  .App .Info {
+    float: left;
+    width: 33.3%; }
+    .App .Info h1 {
+      color: black; }
+  .App .Game .allInfo {
+    background-color: green;
+    overflow: hidden; }
+  .App .Game .buttons {
+    float: left;
+    width: 33.3%;
+    margin-top: 20px; }
+    .App .Game .buttons button {
+      margin: 5px; }
+  .App .Game .scoreBoard {
+    float: right;
+    width: 33.3%;
+    margin-top: 30px; }
+  .App .Game .gameBoard {
+    margin: 0 auto;
+    width: 420px; }
 
 .container {
   margin: 0 auto;

@@ -1,24 +1,55 @@
 .App{
   text-align: center;
   .Square {
-    width: 30%;
+    width: 33.3%;
     background-color:lightblue;
     border: 1px solid blue;
     float: left;
     height: 135px;
     display: flex;
+    box-sizing: border-box;
+  .singleSquare:active{
+    background-color: pink;
+  }
     img {
       align-items: center;
       justify-content: center;
     }
+    .line{
+      width: 112px;
+      height: 47px;
+      border-bottom: 1px solid black;
+      position: absolute;
+    }
   }
   .Info{
+    float: left;
+    width: 33.3%;
     h1{
       color: black;
+    }
+  }
+  .Game {
+    .allInfo {
+      background-color: green;
+      overflow: hidden;
+    }
+    .buttons {
+      float: left;
+      width: 33.3%;
+      margin-top: 20px;
+      button {
+        margin: 5px;
       }
-    .RestartBtn{
-      margin-bottom: 10px;
-      padding: 20px;
+    }
+    .scoreBoard {
+      float: right;
+      width: 33.3%;
+      margin-top: 30px;
+    }
+    .gameBoard{
+      margin: 0 auto;;
+      width: 420px;
     }
   }
 }
