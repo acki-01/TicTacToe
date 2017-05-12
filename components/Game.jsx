@@ -51,6 +51,7 @@ this.setState({
     if (this.state.winner!==null){
       return;
     }
+    //blocking changing icon in div
     if(this.state.boardPattern[location]=='./images/angular.ico' || this.state.boardPattern[location]=='./images/react.ico'){
       return;
     }
@@ -150,6 +151,10 @@ this.setState({
     if (leftCrossReact.match('./images/react.ico./images/react.ico./images/react.ico')){
       this.setState({winner:'React', pointsReact:this.state.pointsReact+1});
       return;
+    }
+    //check if draw
+    if(updatedBoard.indexOf(' ')==-1){
+      this.setState({winner:'Draw :('})
     }
   }
   render() {
