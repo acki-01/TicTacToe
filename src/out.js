@@ -9656,7 +9656,7 @@ var GameBoard = function (_React$Component) {
       //REACT
       //check win rows
       var topRowReact = updatedBoard[0] + updatedBoard[1] + updatedBoard[2];
-      if (topRowReact.match('./images/react.ico./images/react.ico./images/reactr.ico')) {
+      if (topRowReact.match('./images/react.ico./images/react.ico./images/react.ico')) {
         this.setState({ winner: 'React', pointsReact: this.state.pointsReact + 1 });
         return;
       }
@@ -9705,14 +9705,14 @@ var GameBoard = function (_React$Component) {
       if (this.state.pointsAngular > this.state.pointsReact) {
         angularPointsInfo = _react2.default.createElement(
           'p',
-          { className: 'angularWinning angularPoints' },
+          { className: 'angularWinning angularPoints letter-changer' },
           'Angular: ',
           this.state.pointsAngular
         );
       } else {
         angularPointsInfo = _react2.default.createElement(
           'p',
-          { className: 'angularPoints' },
+          { className: 'angularPoints letter-changer' },
           'Angular: ',
           this.state.pointsAngular
         );
@@ -9729,7 +9729,7 @@ var GameBoard = function (_React$Component) {
         reactPointsInfo = _react2.default.createElement(
           'p',
           null,
-          'React:',
+          'React: ',
           this.state.pointsReact
         );
       }

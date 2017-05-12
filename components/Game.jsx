@@ -110,7 +110,7 @@ this.setState({
     //REACT
     //check win rows
     let topRowReact=updatedBoard[0]+updatedBoard[1]+updatedBoard[2];
-    if (topRowReact.match('./images/react.ico./images/react.ico./images/reactr.ico')){
+    if (topRowReact.match('./images/react.ico./images/react.ico./images/react.ico')){
       this.setState({winner:'React', pointsReact:this.state.pointsReact+1});
       return;
     }
@@ -155,15 +155,15 @@ this.setState({
   render() {
     let angularPointsInfo;
     if (this.state.pointsAngular>this.state.pointsReact){
-      angularPointsInfo=<p className='angularWinning angularPoints'>Angular: {this.state.pointsAngular}</p>
+      angularPointsInfo=<p className='angularWinning angularPoints letter-changer'>Angular: {this.state.pointsAngular}</p>
     } else {
-      angularPointsInfo=<p className="angularPoints">Angular: {this.state.pointsAngular}</p>
+      angularPointsInfo=<p className="angularPoints letter-changer">Angular: {this.state.pointsAngular}</p>
     }
     let reactPointsInfo;
     if (this.state.pointsReact>this.state.pointsAngular){
       reactPointsInfo=<p className='reactWinning'>React: {this.state.pointsReact}</p>
     } else {
-      reactPointsInfo=<p>React:{this.state.pointsReact}</p>
+      reactPointsInfo=<p>React: {this.state.pointsReact}</p>
     }
     return (
       <div className="Game">
