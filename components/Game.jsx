@@ -153,6 +153,18 @@ this.setState({
     }
   }
   render() {
+    let angularPointsInfo;
+    if (this.state.pointsAngular>this.state.pointsReact){
+      angularPointsInfo=<p className='angularWinning angularPoints'>Angular: {this.state.pointsAngular}</p>
+    } else {
+      angularPointsInfo=<p className="angularPoints">Angular: {this.state.pointsAngular}</p>
+    }
+    let reactPointsInfo;
+    if (this.state.pointsReact>this.state.pointsAngular){
+      reactPointsInfo=<p className='reactWinning'>React: {this.state.pointsReact}</p>
+    } else {
+      reactPointsInfo=<p>React:{this.state.pointsReact}</p>
+    }
     return (
       <div className="Game">
         <div className="allInfo">
@@ -163,9 +175,8 @@ this.setState({
           </div>
           <Info winner={this.state.winner}/>
         <div className="scoreBoard">
-          <span>Angular: {this.state.pointsAngular}</span>
-          <br/>
-          <span>React: {this.state.pointsReact}</span>
+          {reactPointsInfo}
+          {angularPointsInfo}
         </div>
       </div>
         <div className="gameBoard">

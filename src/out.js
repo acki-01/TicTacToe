@@ -9701,6 +9701,38 @@ var GameBoard = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
+      var angularPointsInfo = void 0;
+      if (this.state.pointsAngular > this.state.pointsReact) {
+        angularPointsInfo = _react2.default.createElement(
+          'p',
+          { className: 'angularWinning angularPoints' },
+          'Angular: ',
+          this.state.pointsAngular
+        );
+      } else {
+        angularPointsInfo = _react2.default.createElement(
+          'p',
+          { className: 'angularPoints' },
+          'Angular: ',
+          this.state.pointsAngular
+        );
+      }
+      var reactPointsInfo = void 0;
+      if (this.state.pointsReact > this.state.pointsAngular) {
+        reactPointsInfo = _react2.default.createElement(
+          'p',
+          { className: 'reactWinning' },
+          'React: ',
+          this.state.pointsReact
+        );
+      } else {
+        reactPointsInfo = _react2.default.createElement(
+          'p',
+          null,
+          'React:',
+          this.state.pointsReact
+        );
+      }
       return _react2.default.createElement(
         'div',
         { className: 'Game' },
@@ -9718,19 +9750,8 @@ var GameBoard = function (_React$Component) {
           _react2.default.createElement(
             'div',
             { className: 'scoreBoard' },
-            _react2.default.createElement(
-              'span',
-              null,
-              'Angular: ',
-              this.state.pointsAngular
-            ),
-            _react2.default.createElement('br', null),
-            _react2.default.createElement(
-              'span',
-              null,
-              'React: ',
-              this.state.pointsReact
-            )
+            reactPointsInfo,
+            angularPointsInfo
           )
         ),
         _react2.default.createElement(

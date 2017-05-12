@@ -1,45 +1,61 @@
-.App {
+@import url(https://fonts.googleapis.com/css?family=Audiowide|Bangers);.App {
   text-align: center; }
   .App .Square {
     width: 33.3%;
-    background-color: lightblue;
+    background-color: rgba(226, 225, 228, 0.8);
     border: 1px solid blue;
     float: left;
     height: 135px;
     display: flex;
     box-sizing: border-box; }
-    .App .Square .singleSquare:active {
-      background-color: pink; }
     .App .Square img {
       align-items: center;
       justify-content: center; }
-    .App .Square .line {
-      width: 112px;
-      height: 47px;
-      border-bottom: 1px solid black;
-      position: absolute; }
   .App .Info {
     float: left;
-    width: 33.3%; }
-    .App .Info h1 {
-      color: black; }
+    width: 33.3%;
+    font-family: 'Audiowide', cursive;
+    color: white;
+    margin-top: 20px; }
   .App .Game .allInfo {
-    background-color: green;
-    overflow: hidden; }
+    overflow: hidden;
+    height: 120px; }
   .App .Game .buttons {
     float: left;
     width: 33.3%;
-    margin-top: 20px; }
+    margin-top: 25px; }
     .App .Game .buttons button {
-      margin: 5px; }
+      margin: 5px;
+      font-size: 14px;
+      border-radius: 10px;
+      font-family: 'Bangers';
+      outline: none;
+      background-color: white; }
+    .App .Game .buttons .NewGameBtn {
+      margin-bottom: 10px; }
   .App .Game .scoreBoard {
     float: right;
     width: 33.3%;
-    margin-top: 30px; }
+    margin-top: 12px;
+    font-family: 'Bangers', cursive;
+    font-size: 18px; }
+    .App .Game .scoreBoard span {
+      display: block; }
   .App .Game .gameBoard {
     margin: 0 auto;
-    width: 420px; }
+    width: 440px; }
 
 .container {
   margin: 0 auto;
-  width: 420px; }
+  width: 440px;
+  background-color: #5f37aa;
+  overflow: hidden; }
+
+.angularWinning {
+  color: red; }
+
+.reactWinning {
+  color: lightblue; }
+
+.angularPoints {
+  margin-left: 20px; }
