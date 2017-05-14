@@ -8,7 +8,7 @@ export default class Square extends React.Component{
   };
   render(){
     return <div className='Square' onClick={()=>this.handleTurnChange(this.props)}>
-      <img src={this.props.turn}></img>
+      <img  className='unselectable' src={this.props.turn}></img>
     </div>
   }
 }

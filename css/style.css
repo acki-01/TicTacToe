@@ -1,4 +1,7 @@
-@import url(https://fonts.googleapis.com/css?family=Audiowide|Bangers);.App {
+@import url(https://fonts.googleapis.com/css?family=Audiowide|Bangers);body {
+  outline: none; }
+
+.App {
   text-align: center; }
   .App .Square {
     width: 33.3%;
@@ -29,7 +32,6 @@
       font-size: 14px;
       border-radius: 10px;
       font-family: 'Bangers';
-      outline: none;
       background-color: white; }
     .App .Game .buttons .NewGameBtn {
       margin-bottom: 10px; }
@@ -59,3 +61,12 @@
 
 .angularPoints {
   margin-left: 15px; }
+
+.unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: default; }

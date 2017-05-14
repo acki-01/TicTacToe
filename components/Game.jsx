@@ -47,126 +47,67 @@ this.setState({
 )
 }
   handleTurnChange(location){
-    //updaingBoard
-    let updatedBoard=updatedBoard=this.state.boardPattern.slice();
-    updatedBoard[location]=this.state.turn;
-    this.setState({boardPattern:updatedBoard});
     const angular='./images/angular.ico';
     const react='./images/react.ico';
     const angularPattern='./images/angular.ico./images/angular.ico./images/angular.ico';
     const reactPattern='./images/react.ico./images/react.ico./images/react.ico';
-    const topRow=updatedBoard[0]+updatedBoard[1]+updatedBoard[2];
-    const midRow=updatedBoard[3]+updatedBoard[4]+updatedBoard[5];
-    const bottomRow=updatedBoard[6]+updatedBoard[7]+updatedBoard[8];
-    const leftCol=updatedBoard[0]+updatedBoard[3]+updatedBoard[6];
-    const midCol=updatedBoard[1]+updatedBoard[4]+updatedBoard[7];
-    const rightCol=updatedBoard[2]+updatedBoard[5]+updatedBoard[8];
-    const rightCross=updatedBoard[0]+updatedBoard[4]+updatedBoard[8];
-    const leftCross=updatedBoard[2]+updatedBoard[4]+updatedBoard[6];
+    console.log(topRow);
     //checking if winner exist and block next move
-    if (this.state.winner!==null){
-      return;
-    }
-    //blocking changing icon in div
-    if(this.state.boardPattern[location]==angular || this.state.boardPattern[location]==react){
-      return;
-    }
-    //togglePlayer
-    if (this.state.turn==angular){
-      this.setState({turn:react})
-    }
-    else if(this.state.turn==react){
-      this.setState({turn:angular})
-    }
-    //ANGULAR
-    //check win rows
-    if (topRow.match(angularPattern)){
-      this.setState({winner:'Angular', pointsAngular:this.state.pointsAngular+1});
-      return;
-    }
-    if (midRow.match(angularPattern)){
-      this.setState({winner:'Angular', pointsAngular:this.state.pointsAngular+1});
-      return;
-    }
-    if (bottomRow.match(angularPattern)){
-      this.setState({winner:'Angular', pointsAngular:this.state.pointsAngular+1});
-      return;
-    }
-    //check win cols
-    if (leftCol.match(angularPattern)){
-      this.setState({winner:'Angular', pointsAngular:this.state.pointsAngular+1});
-      return;
-    }
-    if (midCol.match(angularPattern)){
-      this.setState({winner:'Angular', pointsAngular:this.state.pointsAngular+1});
-      return;
-    }
-    if (rightCol.match(angularPattern)){
-      this.setState({winner:'Angular', pointsAngular:this.state.pointsAngular+1});
-      return;
-    }
-    //check win crosses
-    if (rightCross.match(angularPattern)){
-      this.setState({winner:'Angular', pointsAngular:this.state.pointsAngular+1});
-      return;
-    }
-    if (leftCross.match(angularPattern)){
-      this.setState({winner:'Angular', pointsAngular:this.state.pointsAngular+1});
-      return;
-    }
-    //REACT
-    //check win rows
-    if (topRow.match(reactPattern)){
-      this.setState({winner:'React', pointsReact:this.state.pointsReact+1});
-      return;
-    }
-    if (midRow.match(reactPattern)){
-      this.setState({winner:'React', pointsReact:this.state.pointsReact+1});
-      return;
-    }
-    if (bottomRow.match(reactPattern)){
-      this.setState({winner:'React', pointsReact:this.state.pointsReact+1});
-      return;
-    }
-    //check win cols
-    if (leftCol.match(reactPattern)){
-      this.setState({winner:'React', pointsReact:this.state.pointsReact+1});
-      return;
-    }
-    if (midCol.match(reactPattern)){
-      this.setState({winner:'React', pointsReact:this.state.pointsReact+1});
-      return;
-    }
-    if (rightCol.match(reactPattern)){
-      this.setState({winner:'React', pointsReact:this.state.pointsReact+1});
-      return;
-    }
-    //check win crosses
-    if (rightCross.match(reactPattern)){
-      this.setState({winner:'React', pointsReact:this.state.pointsReact+1});
-      return;
-    }
-    if (leftCross.match(reactPattern)){
-      this.setState({winner:'React', pointsReact:this.state.pointsReact+1});
-      return;
-    }
-    //check if draw
-    if(updatedBoard.indexOf(' ')==-1){
-      this.setState({winner:'Draw '})
-    }
-  }
+       if (this.state.winner!==null){
+         return;
+       }
+       //blocking changing icon in div
+       if(this.state.boardPattern[location]==angular || this.state.boardPattern[location]==react){
+         return;
+       }
+       let updatedBoard=this.state.boardPattern.slice();
+       updatedBoard[location]=this.state.turn;
+       this.setState({boardPattern:updatedBoard})
+       if (this.state.turn==angular){
+         this.setState({turn:react})
+       }
+       else if(this.state.turn==react){
+         this.setState({turn:angular})
+       }
+       const topRow=updatedBoard[0]+updatedBoard[1]+updatedBoard[2];
+       const midRow=updatedBoard[3]+updatedBoard[4]+updatedBoard[5];
+       const bottomRow=updatedBoard[6]+updatedBoard[7]+updatedBoard[8];
+       const leftCol=updatedBoard[0]+updatedBoard[3]+updatedBoard[6];
+       const midCol=updatedBoard[1]+updatedBoard[4]+updatedBoard[7];
+       const rightCol=updatedBoard[2]+updatedBoard[5]+updatedBoard[8];
+       const rightCross=updatedBoard[0]+updatedBoard[4]+updatedBoard[8];
+       const leftCross=updatedBoard[2]+updatedBoard[4]+updatedBoard[6];
+       //ANGULAR wins conditions
+       if (topRow.match(angularPattern) || midRow.match(angularPattern) || bottomRow.match(angularPattern) ||
+          leftCol.match(angularPattern) || midCol.match(angularPattern) || rightCol.match(angularPattern) ||
+          rightCross.match(angularPattern) || leftCross.match(angularPattern)){
+         this.setState({winner:'Angular', pointsAngular:this.state.pointsAngular+1});
+         return;
+       }
+       //REACT wins conditions
+       if (topRow.match(reactPattern) || midRow.match(reactPattern) || bottomRow.match(reactPattern) ||
+          leftCol.match(reactPattern) || midCol.match(reactPattern) || rightCol.match(reactPattern) ||
+          rightCross.match(reactPattern) || leftCross.match(reactPattern)){
+         this.setState({winner:'React', pointsReact:this.state.pointsReact+1});
+         return;
+       }
+       //check if draw
+       if(updatedBoard.indexOf(' ')==-1){
+         this.setState({winner:'Draw'})
+       }
+     }
   render() {
     let angularPointsInfo;
     if (this.state.pointsAngular>this.state.pointsReact){
-      angularPointsInfo=<p className='angularWinning angularPoints letter-changer'>Angular: {this.state.pointsAngular}</p>
+      angularPointsInfo=<p className='angularWinning unselectable'>Angular: {this.state.pointsAngular}</p>
     } else {
-      angularPointsInfo=<p className="angularPoints letter-changer">Angular: {this.state.pointsAngular}</p>
+      angularPointsInfo=<p className="angularPoints unselectable">Angular: {this.state.pointsAngular}</p>
     }
     let reactPointsInfo;
     if (this.state.pointsReact>this.state.pointsAngular){
-      reactPointsInfo=<p className='reactWinning'>React: {this.state.pointsReact}</p>
+      reactPointsInfo=<p className='reactWinning unselectable'>React: {this.state.pointsReact}</p>
     } else {
-      reactPointsInfo=<p>React: {this.state.pointsReact}</p>
+      reactPointsInfo=<p  className='unselectable'>React: {this.state.pointsReact}</p>
     }
     return (
       <div className="Game">
