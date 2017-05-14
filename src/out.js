@@ -9594,113 +9594,111 @@ var GameBoard = function (_React$Component) {
   _createClass(GameBoard, [{
     key: 'handleTurnChange',
     value: function handleTurnChange(location) {
+      //updaingBoard
+      var updatedBoard = updatedBoard = this.state.boardPattern.slice();
+      updatedBoard[location] = this.state.turn;
+      this.setState({ boardPattern: updatedBoard });
+      var angular = './images/angular.ico';
+      var react = './images/react.ico';
+      var angularPattern = './images/angular.ico./images/angular.ico./images/angular.ico';
+      var reactPattern = './images/react.ico./images/react.ico./images/react.ico';
+      var topRow = updatedBoard[0] + updatedBoard[1] + updatedBoard[2];
+      var midRow = updatedBoard[3] + updatedBoard[4] + updatedBoard[5];
+      var bottomRow = updatedBoard[6] + updatedBoard[7] + updatedBoard[8];
+      var leftCol = updatedBoard[0] + updatedBoard[3] + updatedBoard[6];
+      var midCol = updatedBoard[1] + updatedBoard[4] + updatedBoard[7];
+      var rightCol = updatedBoard[2] + updatedBoard[5] + updatedBoard[8];
+      var rightCross = updatedBoard[0] + updatedBoard[4] + updatedBoard[8];
+      var leftCross = updatedBoard[2] + updatedBoard[4] + updatedBoard[6];
       //checking if winner exist and block next move
       if (this.state.winner !== null) {
         return;
       }
       //blocking changing icon in div
-      if (this.state.boardPattern[location] == './images/angular.ico' || this.state.boardPattern[location] == './images/react.ico') {
+      if (this.state.boardPattern[location] == angular || this.state.boardPattern[location] == react) {
         return;
       }
-      var updatedBoard = this.state.boardPattern.slice();
-      updatedBoard[location] = this.state.turn;
-      this.setState({ boardPattern: updatedBoard });
-      if (this.state.turn == './images/angular.ico') {
-        this.setState({ turn: './images/react.ico' });
-      } else if (this.state.turn == './images/react.ico') {
-        this.setState({ turn: './images/angular.ico' });
+      //togglePlayer
+      if (this.state.turn == angular) {
+        this.setState({ turn: react });
+      } else if (this.state.turn == react) {
+        this.setState({ turn: angular });
       }
       //ANGULAR
       //check win rows
-      var topRowAng = updatedBoard[0] + updatedBoard[1] + updatedBoard[2];
-      if (topRowAng.match('./images/angular.ico./images/angular.ico./images/angular.ico')) {
+      if (topRow.match(angularPattern)) {
         this.setState({ winner: 'Angular', pointsAngular: this.state.pointsAngular + 1 });
         return;
       }
-      var midRowAng = updatedBoard[3] + updatedBoard[4] + updatedBoard[5];
-      if (midRowAng.match('./images/angular.ico./images/angular.ico./images/angular.ico')) {
+      if (midRow.match(angularPattern)) {
         this.setState({ winner: 'Angular', pointsAngular: this.state.pointsAngular + 1 });
         return;
       }
-      var bottomRowAng = updatedBoard[6] + updatedBoard[7] + updatedBoard[8];
-      if (bottomRowAng.match('./images/angular.ico./images/angular.ico./images/angular.ico')) {
+      if (bottomRow.match(angularPattern)) {
         this.setState({ winner: 'Angular', pointsAngular: this.state.pointsAngular + 1 });
         return;
       }
       //check win cols
-      var leftColAng = updatedBoard[0] + updatedBoard[3] + updatedBoard[6];
-      if (leftColAng.match('./images/angular.ico./images/angular.ico./images/angular.ico')) {
+      if (leftCol.match(angularPattern)) {
         this.setState({ winner: 'Angular', pointsAngular: this.state.pointsAngular + 1 });
         return;
       }
-      var midColAng = updatedBoard[1] + updatedBoard[4] + updatedBoard[7];
-      if (midColAng.match('./images/angular.ico./images/angular.ico./images/angular.ico')) {
+      if (midCol.match(angularPattern)) {
         this.setState({ winner: 'Angular', pointsAngular: this.state.pointsAngular + 1 });
         return;
       }
-      var rightColAng = updatedBoard[2] + updatedBoard[5] + updatedBoard[8];
-      if (rightColAng.match('./images/angular.ico./images/angular.ico./images/angular.ico')) {
+      if (rightCol.match(angularPattern)) {
         this.setState({ winner: 'Angular', pointsAngular: this.state.pointsAngular + 1 });
         return;
       }
       //check win crosses
-      var rightCrossAng = updatedBoard[0] + updatedBoard[4] + updatedBoard[8];
-      if (rightCrossAng.match('./images/angular.ico./images/angular.ico./images/angular.ico')) {
+      if (rightCross.match(angularPattern)) {
         this.setState({ winner: 'Angular', pointsAngular: this.state.pointsAngular + 1 });
         return;
       }
-      var leftCrossAng = updatedBoard[2] + updatedBoard[4] + updatedBoard[6];
-      if (leftCrossAng.match('./images/angular.ico./images/angular.ico./images/angular.ico')) {
+      if (leftCross.match(angularPattern)) {
         this.setState({ winner: 'Angular', pointsAngular: this.state.pointsAngular + 1 });
         return;
       }
       //REACT
       //check win rows
-      var topRowReact = updatedBoard[0] + updatedBoard[1] + updatedBoard[2];
-      if (topRowReact.match('./images/react.ico./images/react.ico./images/react.ico')) {
+      if (topRow.match(reactPattern)) {
         this.setState({ winner: 'React', pointsReact: this.state.pointsReact + 1 });
         return;
       }
-      var midRowReact = updatedBoard[3] + updatedBoard[4] + updatedBoard[5];
-      if (midRowReact.match('./images/react.ico./images/react.ico./images/react.ico')) {
+      if (midRow.match(reactPattern)) {
         this.setState({ winner: 'React', pointsReact: this.state.pointsReact + 1 });
         return;
       }
-      var bottomRowReact = updatedBoard[6] + updatedBoard[7] + updatedBoard[8];
-      if (bottomRowAng.match('./images/react.ico./images/react.ico./images/react.ico')) {
+      if (bottomRow.match(reactPattern)) {
         this.setState({ winner: 'React', pointsReact: this.state.pointsReact + 1 });
         return;
       }
       //check win cols
-      var leftColReact = updatedBoard[0] + updatedBoard[3] + updatedBoard[6];
-      if (leftColReact.match('./images/react.ico./images/react.ico./images/react.ico')) {
+      if (leftCol.match(reactPattern)) {
         this.setState({ winner: 'React', pointsReact: this.state.pointsReact + 1 });
         return;
       }
-      var midColReact = updatedBoard[1] + updatedBoard[4] + updatedBoard[7];
-      if (midColReact.match('./images/react.ico./images/react.ico./images/react.ico')) {
+      if (midCol.match(reactPattern)) {
         this.setState({ winner: 'React', pointsReact: this.state.pointsReact + 1 });
         return;
       }
-      var rightColReact = updatedBoard[2] + updatedBoard[5] + updatedBoard[8];
-      if (rightColReact.match('./images/react.ico./images/react.ico./images/react.ico')) {
+      if (rightCol.match(reactPattern)) {
         this.setState({ winner: 'React', pointsReact: this.state.pointsReact + 1 });
         return;
       }
       //check win crosses
-      var rightCrossReact = updatedBoard[0] + updatedBoard[4] + updatedBoard[8];
-      if (rightCrossReact.match('./images/react.ico./images/react.ico./images/react.ico')) {
+      if (rightCross.match(reactPattern)) {
         this.setState({ winner: 'React', pointsReact: this.state.pointsReact + 1 });
         return;
       }
-      var leftCrossReact = updatedBoard[2] + updatedBoard[4] + updatedBoard[6];
-      if (leftCrossReact.match('./images/react.ico./images/react.ico./images/react.ico')) {
+      if (leftCross.match(reactPattern)) {
         this.setState({ winner: 'React', pointsReact: this.state.pointsReact + 1 });
         return;
       }
       //check if draw
       if (updatedBoard.indexOf(' ') == -1) {
-        this.setState({ winner: 'Draw :(' });
+        this.setState({ winner: 'Draw ' });
       }
     }
   }, {

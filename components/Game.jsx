@@ -47,114 +47,112 @@ this.setState({
 )
 }
   handleTurnChange(location){
+    //updaingBoard
+    let updatedBoard=updatedBoard=this.state.boardPattern.slice();
+    updatedBoard[location]=this.state.turn;
+    this.setState({boardPattern:updatedBoard});
+    const angular='./images/angular.ico';
+    const react='./images/react.ico';
+    const angularPattern='./images/angular.ico./images/angular.ico./images/angular.ico';
+    const reactPattern='./images/react.ico./images/react.ico./images/react.ico';
+    const topRow=updatedBoard[0]+updatedBoard[1]+updatedBoard[2];
+    const midRow=updatedBoard[3]+updatedBoard[4]+updatedBoard[5];
+    const bottomRow=updatedBoard[6]+updatedBoard[7]+updatedBoard[8];
+    const leftCol=updatedBoard[0]+updatedBoard[3]+updatedBoard[6];
+    const midCol=updatedBoard[1]+updatedBoard[4]+updatedBoard[7];
+    const rightCol=updatedBoard[2]+updatedBoard[5]+updatedBoard[8];
+    const rightCross=updatedBoard[0]+updatedBoard[4]+updatedBoard[8];
+    const leftCross=updatedBoard[2]+updatedBoard[4]+updatedBoard[6];
     //checking if winner exist and block next move
     if (this.state.winner!==null){
       return;
     }
     //blocking changing icon in div
-    if(this.state.boardPattern[location]=='./images/angular.ico' || this.state.boardPattern[location]=='./images/react.ico'){
+    if(this.state.boardPattern[location]==angular || this.state.boardPattern[location]==react){
       return;
     }
-    let updatedBoard=this.state.boardPattern.slice();
-    updatedBoard[location]=this.state.turn;
-    this.setState({boardPattern:updatedBoard})
-    if (this.state.turn=='./images/angular.ico'){
-      this.setState({turn:'./images/react.ico'})
+    //togglePlayer
+    if (this.state.turn==angular){
+      this.setState({turn:react})
     }
-    else if(this.state.turn=='./images/react.ico'){
-      this.setState({turn:'./images/angular.ico'})
+    else if(this.state.turn==react){
+      this.setState({turn:angular})
     }
     //ANGULAR
     //check win rows
-    let topRowAng=updatedBoard[0]+updatedBoard[1]+updatedBoard[2];
-    if (topRowAng.match('./images/angular.ico./images/angular.ico./images/angular.ico')){
+    if (topRow.match(angularPattern)){
       this.setState({winner:'Angular', pointsAngular:this.state.pointsAngular+1});
       return;
     }
-    let midRowAng=updatedBoard[3]+updatedBoard[4]+updatedBoard[5];
-    if (midRowAng.match('./images/angular.ico./images/angular.ico./images/angular.ico')){
+    if (midRow.match(angularPattern)){
       this.setState({winner:'Angular', pointsAngular:this.state.pointsAngular+1});
       return;
     }
-    let bottomRowAng=updatedBoard[6]+updatedBoard[7]+updatedBoard[8];
-    if (bottomRowAng.match('./images/angular.ico./images/angular.ico./images/angular.ico')){
+    if (bottomRow.match(angularPattern)){
       this.setState({winner:'Angular', pointsAngular:this.state.pointsAngular+1});
       return;
     }
     //check win cols
-    let leftColAng=updatedBoard[0]+updatedBoard[3]+updatedBoard[6];
-    if (leftColAng.match('./images/angular.ico./images/angular.ico./images/angular.ico')){
+    if (leftCol.match(angularPattern)){
       this.setState({winner:'Angular', pointsAngular:this.state.pointsAngular+1});
       return;
     }
-    let midColAng=updatedBoard[1]+updatedBoard[4]+updatedBoard[7];
-    if (midColAng.match('./images/angular.ico./images/angular.ico./images/angular.ico')){
+    if (midCol.match(angularPattern)){
       this.setState({winner:'Angular', pointsAngular:this.state.pointsAngular+1});
       return;
     }
-    let rightColAng=updatedBoard[2]+updatedBoard[5]+updatedBoard[8];
-    if (rightColAng.match('./images/angular.ico./images/angular.ico./images/angular.ico')){
+    if (rightCol.match(angularPattern)){
       this.setState({winner:'Angular', pointsAngular:this.state.pointsAngular+1});
       return;
     }
     //check win crosses
-    let rightCrossAng=updatedBoard[0]+updatedBoard[4]+updatedBoard[8];
-    if (rightCrossAng.match('./images/angular.ico./images/angular.ico./images/angular.ico')){
+    if (rightCross.match(angularPattern)){
       this.setState({winner:'Angular', pointsAngular:this.state.pointsAngular+1});
       return;
     }
-    let leftCrossAng=updatedBoard[2]+updatedBoard[4]+updatedBoard[6];
-    if (leftCrossAng.match('./images/angular.ico./images/angular.ico./images/angular.ico')){
+    if (leftCross.match(angularPattern)){
       this.setState({winner:'Angular', pointsAngular:this.state.pointsAngular+1});
       return;
     }
     //REACT
     //check win rows
-    let topRowReact=updatedBoard[0]+updatedBoard[1]+updatedBoard[2];
-    if (topRowReact.match('./images/react.ico./images/react.ico./images/react.ico')){
+    if (topRow.match(reactPattern)){
       this.setState({winner:'React', pointsReact:this.state.pointsReact+1});
       return;
     }
-    let midRowReact=updatedBoard[3]+updatedBoard[4]+updatedBoard[5];
-    if (midRowReact.match('./images/react.ico./images/react.ico./images/react.ico')){
+    if (midRow.match(reactPattern)){
       this.setState({winner:'React', pointsReact:this.state.pointsReact+1});
       return;
     }
-    let bottomRowReact=updatedBoard[6]+updatedBoard[7]+updatedBoard[8];
-    if (bottomRowAng.match('./images/react.ico./images/react.ico./images/react.ico')){
+    if (bottomRow.match(reactPattern)){
       this.setState({winner:'React', pointsReact:this.state.pointsReact+1});
       return;
     }
     //check win cols
-    let leftColReact=updatedBoard[0]+updatedBoard[3]+updatedBoard[6];
-    if (leftColReact.match('./images/react.ico./images/react.ico./images/react.ico')){
+    if (leftCol.match(reactPattern)){
       this.setState({winner:'React', pointsReact:this.state.pointsReact+1});
       return;
     }
-    let midColReact=updatedBoard[1]+updatedBoard[4]+updatedBoard[7];
-    if (midColReact.match('./images/react.ico./images/react.ico./images/react.ico')){
+    if (midCol.match(reactPattern)){
       this.setState({winner:'React', pointsReact:this.state.pointsReact+1});
       return;
     }
-    let rightColReact=updatedBoard[2]+updatedBoard[5]+updatedBoard[8];
-    if (rightColReact.match('./images/react.ico./images/react.ico./images/react.ico')){
+    if (rightCol.match(reactPattern)){
       this.setState({winner:'React', pointsReact:this.state.pointsReact+1});
       return;
     }
     //check win crosses
-    let rightCrossReact=updatedBoard[0]+updatedBoard[4]+updatedBoard[8];
-    if (rightCrossReact.match('./images/react.ico./images/react.ico./images/react.ico')){
+    if (rightCross.match(reactPattern)){
       this.setState({winner:'React', pointsReact:this.state.pointsReact+1});
       return;
     }
-    let leftCrossReact=updatedBoard[2]+updatedBoard[4]+updatedBoard[6];
-    if (leftCrossReact.match('./images/react.ico./images/react.ico./images/react.ico')){
+    if (leftCross.match(reactPattern)){
       this.setState({winner:'React', pointsReact:this.state.pointsReact+1});
       return;
     }
     //check if draw
     if(updatedBoard.indexOf(' ')==-1){
-      this.setState({winner:'Draw :('})
+      this.setState({winner:'Draw '})
     }
   }
   render() {
