@@ -9598,7 +9598,6 @@ var GameBoard = function (_React$Component) {
       var react = './images/react.ico';
       var angularPattern = './images/angular.ico./images/angular.ico./images/angular.ico';
       var reactPattern = './images/react.ico./images/react.ico./images/react.ico';
-      console.log(topRow);
       //checking if winner exist and block next move
       if (this.state.winner !== null) {
         return;
@@ -10021,12 +10020,16 @@ var Square = function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
+      var AnimClass = void 0;
+      if (this.props.turn == './images/react.ico') {
+        AnimClass = 'react-animation';
+      }
       return _react2.default.createElement(
         'div',
         { className: 'Square', onClick: function onClick() {
             return _this2.handleTurnChange(_this2.props);
           } },
-        _react2.default.createElement('img', { className: 'unselectable', src: this.props.turn })
+        _react2.default.createElement('img', { className: 'unselectable' + ' ' + AnimClass, src: this.props.turn })
       );
     }
   }]);

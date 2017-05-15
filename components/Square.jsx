@@ -7,8 +7,12 @@ export default class Square extends React.Component{
       }
   };
   render(){
+    let AnimClass;
+    if (this.props.turn=='./images/react.ico'){
+      AnimClass='react-animation';
+    }
     return <div className='Square' onClick={()=>this.handleTurnChange(this.props)}>
-      <img  className='unselectable' src={this.props.turn}></img>
+      <img  className={'unselectable' + ' '+ AnimClass} src={this.props.turn}></img>
     </div>
   }
 }

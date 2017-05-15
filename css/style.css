@@ -1,19 +1,21 @@
 @import url(https://fonts.googleapis.com/css?family=Audiowide|Bangers);body {
-  outline: none; }
+  background-color: #52527a; }
 
 .App {
-  text-align: center; }
+  text-align: center;
+  overflow: hidden; }
   .App .Square {
     width: 33.3%;
-    background-color: rgba(226, 225, 228, 0.8);
-    border: 1px solid blue;
+    background-color: #e2e1e4;
+    border: 1px solid #5f37aa;
     float: left;
     height: 135px;
-    display: flex;
-    box-sizing: border-box; }
+    box-sizing: border-box;
+    cursor: pointer; }
     .App .Square img {
-      align-items: center;
-      justify-content: center; }
+      cursor: pointer; }
+  .App .Square:hover {
+    background-color: #c8c6cc; }
   .App .Info {
     float: left;
     width: 33.3%;
@@ -21,8 +23,12 @@
     color: white;
     margin-top: 20px; }
   .App .Game .allInfo {
+    background-color: #5f37aa;
+    height: 120px;
     overflow: hidden;
-    height: 120px; }
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    border-left: 1px solid black; }
   .App .Game .buttons {
     float: left;
     width: 33.3%;
@@ -32,7 +38,8 @@
       font-size: 14px;
       border-radius: 10px;
       font-family: 'Bangers';
-      background-color: white; }
+      background-color: white;
+      outline: none; }
     .App .Game .buttons .NewGameBtn {
       margin-bottom: 10px; }
   .App .Game .scoreBoard {
@@ -45,12 +52,12 @@
       display: block; }
   .App .Game .gameBoard {
     margin: 0 auto;
-    width: 440px; }
+    width: 440px;
+    overflow: hidden; }
 
 .container {
   margin: 0 auto;
   width: 440px;
-  background-color: #5f37aa;
   overflow: hidden; }
 
 .angularWinning {
@@ -70,3 +77,12 @@
   -ms-user-select: none;
   user-select: none;
   cursor: default; }
+
+.react-animation {
+  animation: react-spin infinite 20s linear; }
+
+@keyframes react-spin {
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(360deg); } }

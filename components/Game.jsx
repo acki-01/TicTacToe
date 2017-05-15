@@ -2,7 +2,7 @@ import React from 'react';
 import Square from './Square.jsx';
 import NextRoundBtn from './NextRoundBtn.jsx';
 import NewGameBtn from './NewGameBtn.jsx';
-import Info from '../components/Info.jsx';
+import Info from './Info.jsx';
 export default class GameBoard extends React.Component{
   constructor(props){
     super(props);
@@ -51,7 +51,6 @@ this.setState({
     const react='./images/react.ico';
     const angularPattern='./images/angular.ico./images/angular.ico./images/angular.ico';
     const reactPattern='./images/react.ico./images/react.ico./images/react.ico';
-    console.log(topRow);
     //checking if winner exist and block next move
        if (this.state.winner!==null){
          return;
@@ -96,6 +95,7 @@ this.setState({
          this.setState({winner:'Draw'})
        }
      }
+
   render() {
     let angularPointsInfo;
     if (this.state.pointsAngular>this.state.pointsReact){
