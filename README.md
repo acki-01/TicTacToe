@@ -1,5 +1,5 @@
 # Angular vs React Tic-Tac-Toe Game
-This game was prepared as final project on Coders Lab's "Become Junior Front-End" bootcamp.</br></br>
+This game was prepared as final project on Coders Lab's "Become Junior Front-End Developer" bootcamp.</br></br>
 Link: https://arkadiuszizycki.github.io/TicTacToe/</br></br> Technology I've used:
   - ReactJS
   - ES6
