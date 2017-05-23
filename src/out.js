@@ -10020,16 +10020,20 @@ var Square = function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      var AnimClass = void 0;
+      console.log(this.props);
+      var addClass = void 0;
       if (this.props.turn == './images/react.ico') {
-        AnimClass = 'react-animation';
+        addClass = 'react-animation';
+      }
+      if (this.props.turn == " ") {
+        addClass = "hidden";
       }
       return _react2.default.createElement(
         'div',
         { className: 'Square', onClick: function onClick() {
             return _this2.handleTurnChange(_this2.props);
           } },
-        _react2.default.createElement('img', { className: 'unselectable' + ' ' + AnimClass, src: this.props.turn })
+        _react2.default.createElement('img', { className: 'unselectable' + ' ' + addClass, src: this.props.turn })
       );
     }
   }]);
